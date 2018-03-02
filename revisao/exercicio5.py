@@ -1,6 +1,6 @@
 def main():
-    conjA = [7,2,3]
-    conjB = [14,21,6]
+    conjA = [0,2,3]
+    conjB = [0,21,6]
     print(detectaProd(conjA, conjB))
 
 def detectaProd(lstA, lstB):
