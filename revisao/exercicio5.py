@@ -17,8 +17,8 @@ def corrente(texto, indice):
     return resultado
 
 def main():
-    texto = "Ontem choveu aqui em casa"
-    palavra = corrente(texto, 4)
+    texto = "a"
+    palavra = corrente(texto, 0)
     print(palavra)
 
 if __name__ == '__main__':
