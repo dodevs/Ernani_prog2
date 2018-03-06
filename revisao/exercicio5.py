@@ -3,10 +3,10 @@ def corrente(texto, indice):
     tamanhoP = len(texto)
     resultado = None
 
-    if indice < tamanhoP:
+    if indice < tamanhoP and indice > 0:
         if texto[indice].isalnum():
             iStart = iEnd = indice
-            while iStart > 0 and texto[iStart].isalnum():
+            while iStart - 1 > 0 and texto[iStart - 1].isalnum():
                 iStart -= 1
 
             while iEnd < tamanhoP and texto[iEnd].isalnum():
