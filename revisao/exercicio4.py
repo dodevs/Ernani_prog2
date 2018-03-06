@@ -17,7 +17,7 @@ def separaPal(texto):
     return listaPal
 
 def main():
-    texto = 'Eu comi um pe-de-moleque'
+    texto = 'Eu comi um pe--de-moleque'
     #texto = open('biblia-em-txt.txt','rt').read()
     print(separaPal(texto))
 
