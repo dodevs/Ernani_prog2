@@ -31,11 +31,13 @@ def separaPal(texto):
     return listaPal, listaPalCont
 
 def main():
-    texto = "Oeeeeeee"
-    #texto = open('biblia-em-txt.txt', 'rt').read()
+    texto = "a a a c d a a b c a"
+    #texto = open('arquivo.txt', 'rt').read()
     result = (separaPal(texto))
+    print("{:<20} | QUANTIDADE".format("PALAVRA"))
+    print("-"*40)
     for i in range(len(result[0])):
-        print(result[0][i],"|",result[1][i])
+        print("{:<20} | {}".format(result[0][i], result[1][i]))
 
 if __name__ == "__main__":
     main()
