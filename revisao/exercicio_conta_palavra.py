@@ -31,8 +31,8 @@ def separaPal(texto):
     return listaPal, listaPalCont
 
 def main():
-    texto = 'O rato o tres'
-    #texto = open('biblia-em-txt.txt','rt').read()
+    texto = "Oeeeeeee"
+    #texto = open('biblia-em-txt.txt', 'rt').read()
     result = (separaPal(texto))
     for i in range(len(result[0])):
         print(result[0][i],"|",result[1][i])
