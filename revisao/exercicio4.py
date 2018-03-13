@@ -18,7 +18,7 @@ def separaPal(texto):
 
 def main():
     #texto = 'Eu comi um pe-de-moleque'
-    texto = open('biblia-em-txt.txt','rt').read()
+    texto = open('arquivo.txt', 'rt').read()
     print(separaPal(texto))
 
 if __name__ == "__main__":
