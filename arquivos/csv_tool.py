@@ -1,45 +1,72 @@
-def separaPal(texto):
-    listaPal = []
-    temp = ""
-    for i in range(len(texto)):
-
-        if texto[i].isalnum() or texto[i] == '"':
-            temp += texto[i]
-        elif len(temp) > 0: # nome, "teste, teste", id
-            if temp[0] == "\"" and temp[-1] != '"' :
-                temp += texto[i]
-            else:
-                listaPal.append(temp)
-                temp = ""
-
-    if len(temp) > 0:
-        listaPal.append(temp)
-
-    return listaPal
-
 def split_cells(csv):
-    for i in range(len(texto)):
-        
+    temp = ''
+    listCells = []
+    for i in range(len(csv)):
+        if csv[i] != ',':
+            temp += csv[i]
+        elif len(temp) > 0:
+            if temp[0] == '"' and temp[-1] != '"':
+                temp += csv[i]
+            else:
+                listCells.append(temp.strip())
+                temp = ''
+    if len(temp) > 0:
+        listCells.append(temp.strip())
 
-def table_to_dict(csv):
-    table_dict = dict()
+    return listCells
+
+
+def list_to_table(table_list):
+    newTableList = open('new_table.csv', 'wt')
+    for cell in table_list:
+        line = ','.join(cell)+'\n'
+        newTableList.write(line)
+
+    newTableList.close()
+
+
+def table_to_list(csv):
+    table_list = list()
     table_file = open(csv, "rt")
-    table_file.readline()
+    columns_meta = table_file.readline()
     table_line = table_file.readline()
+
     while table_line != "":
-        print(table_line)
-        print(separaPal(table_line))
+        cells = split_cells(table_line)
+        table_list.append(cells)
+
         table_line = table_file.readline()
 
     table_file.close()
 
-def move_columns_to_end(csv, columns):
-    return 0
+    return columns_meta,table_list
+
+
+def move_columns_to(csv, columns, after='end'):
+
+    for cell in csv:
+        cellLen = len(cell)
+        increment = 0
+        decrement = 0
+
+        for column in columns:
+            temp = cell[column-decrement]
+
+            if after == 'end':
+                cell.insert(cellLen,temp)
+                cell.pop(column-decrement)
+            elif after != 'end':
+                cell.insert(after+increment, temp)
+                cell.pop(column-decrement)
+
+            increment+=1
+            decrement+=1
 
 
 def main(args):
-    table_dict = table_to_dict(args[1])
-    newTable = move_columns_to_end(args[1], (0,1))
+    table_meta,table_list = table_to_list(args[1])
+    move_columns_to(table_list, (0,1), after='end')
+    list_to_table(table_list)
 
 
 if __name__ == "__main__":
