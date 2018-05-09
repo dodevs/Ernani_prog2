@@ -10,7 +10,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "args": ["${workspaceRoot}\\arquivos\\materiaisv1.csv"]
+            "args": ["${workspaceRoot}/arquivos/materiaisv1.csv"]
         },
         {
             "name": "Python: Attach",
