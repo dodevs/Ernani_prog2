@@ -18,6 +18,9 @@ def divisaoRecursiva(x,y):#10,2
     else:
         return divisaoRecursiva(subt,y)
 
+#Raiz com método newthon raphson
+def raizRecursiva():
+    return 0
 
 def main():
     print(somaRecursiva([1,2,3]))
