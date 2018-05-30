@@ -29,28 +29,55 @@ def divisaoRecursiva(x,y):#10,2
 #Agora o Xi se torna o Xo da proxima aproximação
 #Xi = (5,2² + 27) / 2 * 5,2
 def raizRecursiva(n,t,xo=0):
-    if t == 1:
-        Xo = [x for x in range(n)  if (x**2) < n ][-1]
-    else:
-        Xo = xo
-    if n == 1:
-        return 1
-    elif n == 0:
-        return 0
-    else:
-        Xi = ((Xo ** 2) + n) / (2 * Xo)
-        precisao = Xo - Xi
-        while i < t
-            
+    pass
 
-        return Xi
+def onList(e, l): #e=3, l=[1,2,3]
+    if l == []:
+        return False
+    elif e == l[0]:
+        return True
+    else:
+        return onList(e,l[1:])
+
+def invertString(s): #teste
+    if s == '':
+        return ''
+    elif len(s) == 1:
+        return s
+    else:
+        return s[-1] + invertString(s[:-1])
+
+def isnatural(s):
+    return "Nao implementada"
+
+class maiorRecursivo:
+    def __init__(self, l):
+        self.maior = l[0]
+        self.l = l
+        self(self.l, self.maior)
+    def __call__(self,l,maior):
+        if len(l) == 1:
+            if l[0] > maior:
+                return l[0]
+            else:
+                return maior
+        else:
+            if l[0] >= maior:
+                return self(l[1:], l[0])
+            else:
+                return self(l[1:], maior) 
+    def __str__(self):
+        return str(self.maior)
 
 def main():
     #print(somaRecursiva([1,2,3]))
     #print(produtoRecursivo(3,3))
     #print(divisaoRecursiva(50,20))
-    print(raizRecursiva(27,1))
-
+    #print(raizRecursiva(27,1))
+    #print(onList(0,[1]))
+    #print(invertString('maquina'))
+    maior = maiorRecursivo([0,1,2,3])
+    print(maior)
 
 if __name__ == "__main__":
     main()
