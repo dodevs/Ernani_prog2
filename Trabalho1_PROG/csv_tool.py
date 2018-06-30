@@ -1,8 +1,8 @@
-def split_cells(csv):
+def split_cells(csv,separador):
     temp = ''
     listCells = []
     for i in range(len(csv)):
-        if csv[i] != ',':
+        if csv[i] != separador:
             temp += csv[i]
         elif len(temp) > 0:
             if temp[0] == '"' and temp[-1] != '"':
@@ -19,7 +19,7 @@ def split_cells(csv):
 def list_to_table(table_list):
     newTableList = open('new_table.csv', 'wt')
     for cell in table_list:
-        line = ','.join(cell)+'\n'
+        line = ';'.join(cell)+'\n'
         newTableList.write(line)
 
     newTableList.close()
@@ -32,7 +32,7 @@ def table_to_list(csv):
     table_line = table_file.readline()
 
     while table_line != "":
-        cells = split_cells(table_line)
+        cells = split_cells(table_line,';')
         table_list.append(cells)
 
         table_line = table_file.readline()
