@@ -38,31 +38,32 @@ def table_to_list(csv):
 
     return table_list
 
-def ordena_quick(lista_dados, coluna):
-    from random import randint
-    left = []
-    right = []
+def trocar(v, n, m):
+    aux = v[n]
+    v[n] = v[m]
+    v[m] = aux
 
-    pivo = randint(1,len(lista_dados)-1)
+# É passado o vetor, a posicao de inicio e posicao final
+def ordena_quick(v, start, end):
+    if start < end: #condicao de parada
+        q = particionar(v, start, end) # encontro o pivo
+        ordena_quick(v, start, q-1) # pivotagem a esquerda (ordena os menores que o pivo)
+        ordena_quick(v, q+1, end) # pivotagem a direita ( ... )
 
-    if lista_dados:
-        #left = [x for x in lista_dados if x < lista_dados[0]]
-        for x in lista_dados:
-            if x[coluna] < lista_dados[pivo][coluna]:
-                left.append(x)
+def particionar(v, start, end):
+    pivo = v[start][1] # O pivo é o primeiro elemento da esquerda
+    i = start # destino final do pivo
+    j = start + 1 #contador para percorrer o restante do pivo
+    
+    while j <= end:
+        if v[j][1] < pivo:
+            i += 1 # detectou um elemento menor que o pivo, incrementa o i
+            trocar(v, i, j)
+        j += 1 #passa para o proximo elemento
 
-        #right = [x for x in lista_dados if x > lista_dados[0]]
-        for x in lista_dados:
-            if x[coluna] > lista_dados[pivo][coluna]:
-                right.append(x)
+    trocar(v, start, i)
 
-        if len(left) > 1:
-                left = ordena_quick(left,coluna)
-        if len(right) > 1:
-                right = ordena_quick(right,coluna)
-
-        return left + [lista_dados[0]] * lista_dados.count(lista_dados[0]) + right
-    return []
+    return i
 
 def intercala(lista_arquivos_partes, nome_arquivo_total):
     pass
@@ -97,12 +98,12 @@ def particiona(nome_arquivo, partes):
 def main():
     
     lista_arquivos = particiona('Planilhas_Enem_2015_download.csv', 2)
-    #lista_arquivos = particiona('Teste.csv', 2)
+    #lista_arquivos = particiona('Simple.csv', 2)
     
     for arquivo in lista_arquivos:
         table_list = table_to_list(arquivo)
-        ordened_table_list = ordena_quick(table_list,2)
-        list_to_table(arquivo, ordened_table_list)
+        ordena_quick(table_list,0,len(table_list)-1)
+        list_to_table(arquivo, table_list)
 
 if __name__ == "__main__":
     main()
