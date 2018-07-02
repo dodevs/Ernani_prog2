@@ -65,7 +65,7 @@ def move_columns_to(csv, columns, after='end'):
 
 def main(args):
     table_meta,table_list = table_to_list(args[1])
-    move_columns_to(table_list, (0,1), after='end')
+    move_columns_to(table_list, (1,2), after=-1)
     list_to_table(table_list)
 
 
