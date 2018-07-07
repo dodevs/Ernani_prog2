@@ -10,11 +10,16 @@
 >   * criaLst()
 >   * carrega()
 > - [x] soma
-> - [ ] multiplica
-> - [ ] vezesK
-> - [ ] transposta
+> - [x] multiplica
+> - [x] vezesK
+> - [x] clona
+> - [x] diagP
+> - [x] diagS
+> - [x] quantLinhas
+> - [x] quantColunas
+> - [x] transposta
 > - [ ] toString [Matriz bonita]
-> - [ ] salva
+> - [x] salva
 
 #### Exemplos:
 ```python
