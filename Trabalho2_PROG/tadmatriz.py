@@ -60,7 +60,7 @@ def salva(tadMat, nome_arquivo):
 
     for l in range(linhas):
         for c in range(colunas):
-            linha_lst.append(str(getElem(tadMat,l,c)))
+            linha_lst.append("{:.1f}".format(getElem(tadMat,l,c)))
         matriz_file.write(" ".join(linha_lst)+"\n")
         linha_lst.clear()
 
@@ -217,4 +217,6 @@ def transposta(tadMat):
     for key in dados:
         dados_t[key[1],key[0]] = dados[key]
         
+    tadMat['linhas'] = colunas
+    tadMat['colunas'] = linhas
     tadMat['dados'] = dados_t
