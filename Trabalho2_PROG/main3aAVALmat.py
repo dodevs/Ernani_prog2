@@ -42,6 +42,12 @@ def operacao_matriz(tadMat, operacao, alvo):
             return tadm.subtracao(tadMat, tadMatB)
 
 
+def print_diag(tadMat_diag, _str):
+    print("\n\nDiagonal %s da matriz :" % _str, end="\n\n")
+    for elem in tadMat_diag:
+        print("%.1f" % elem, end=" "*2)
+
+
 def main(args):
     #####################################################################################
     ## 
@@ -69,19 +75,11 @@ def main(args):
     tadm.salva(tadMat, "Q1.txt")
 
     tadMat_diagP = tadm.diagP(tadMat)
-    print(len(tadMat_diagP))
     tadMat_diagS = tadm.diagS(tadMat)
-    print(len(tadMat_diagS))
 
-    '''
-    print("Diagonal principal da matriz :", end="\n\n")
-    for elem in tadMat_diagP:
-        print(elem, end=" "*2)
+    print_diag(tadMat_diagP, "principal")
+    print_diag(tadMat_diagS, "secundária")
 
-    print("\n\nDiagonal secundaria da matriz :",end='\n\n')
-    for elem in tadMat_diagS:
-        print(elem, end=" "*2)
-    '''
     return 0
 ## fim main ..
 

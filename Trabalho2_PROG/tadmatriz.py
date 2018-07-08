@@ -1,22 +1,3 @@
-def separa_pal(line):
-    temp = ''
-    lista = []
-    for i in range(len(line)):
-        if line[i] != ' ':
-            temp += line[i]
-        elif len(temp) > 0:
-            striped_temp = temp.strip()
-            striped_temp = float(striped_temp)
-            lista.append(striped_temp)
-            temp = ''
-    if len(temp) > 0:
-        striped_temp = temp.strip()
-        striped_temp = float(striped_temp)
-        lista.append(striped_temp)
-
-    return lista
-
-
 def cria(linhas, colunas):
     return {'linhas': linhas, 'colunas': colunas, 'dados': {}}
 
@@ -35,14 +16,30 @@ def criaLst(matriz_lst):
 
 
 def carrega(nome_arquivo):
-    #Tratar os \n e usar 'separa_pal'
     matriz_file = open(nome_arquivo, 'rt', encoding='utf8')
     linha_matriz = matriz_file.readline()
 
     matriz_lst = []
 
     while linha_matriz != "":
-        matriz_lst.append(separa_pal(linha_matriz))
+        temp = ''
+        linha_mat = []
+        for i in range(len(linha_matriz)):
+            if linha_matriz[i] != ' ':
+                temp += linha_matriz[i]
+            elif len(temp) > 0:
+                striped_temp = temp.strip()
+                striped_temp = float(striped_temp)
+                linha_mat.append(striped_temp)
+                temp = ''
+        if len(temp) > 0:
+            striped_temp = temp.strip()
+            striped_temp = float(striped_temp)
+            linha_mat.append(striped_temp)
+
+        matriz_lst.append(linha_mat)
+
+
         linha_matriz = matriz_file.readline()
     
     matriz_file.close()
@@ -202,7 +199,7 @@ def diagS(tadMat):
     if linhas == colunas:
         for l in range(linhas):
             for c in range(colunas):
-                if (colunas + 1) == (l + c):
+                if (colunas - 1) == (l + c):
                     diagS_lst.append(getElem(tadMat,l,c))
         return diagS_lst
     else:
